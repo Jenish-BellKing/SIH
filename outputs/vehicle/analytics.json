@@ -1,0 +1,88 @@
+{
+  "camera_id": "CAM-VEHICLE-01",
+  "source": "test-videos/vehicles/vehicle-road.mp4",
+  "current_vehicles": 0,
+  "unique_vehicles_tracks": 8,
+  "peak_vehicles": 2,
+  "cars": 7,
+  "motorcycles": 0,
+  "buses": 1,
+  "trucks": 0,
+  "average_confidence": 0.542,
+  "anpr_detections": 0,
+  "total_frames_processed": 377,
+  "tracks": {
+    "V001": {
+      "vehicle_class": "car",
+      "first_seen": "2026-08-27T09:49:51",
+      "last_seen": "2026-08-27T09:50:43",
+      "avg_confidence": 0.49,
+      "frame_count": 7,
+      "plate": null,
+      "plate_confidence": null
+    },
+    "V004": {
+      "vehicle_class": "car",
+      "first_seen": "2026-08-27T09:50:45",
+      "last_seen": "2026-08-27T09:50:45",
+      "avg_confidence": 0.54,
+      "frame_count": 4,
+      "plate": null,
+      "plate_confidence": null
+    },
+    "V005": {
+      "vehicle_class": "car",
+      "first_seen": "2026-08-27T09:50:48",
+      "last_seen": "2026-08-27T09:50:49",
+      "avg_confidence": 0.49,
+      "frame_count": 6,
+      "plate": null,
+      "plate_confidence": null
+    },
+    "V006": {
+      "vehicle_class": "car",
+      "first_seen": "2026-08-27T09:50:49",
+      "last_seen": "2026-08-27T09:50:49",
+      "avg_confidence": 0.36,
+      "frame_count": 1,
+      "plate": null,
+      "plate_confidence": null
+    },
+    "V008": {
+      "vehicle_class": "bus",
+      "first_seen": "2026-08-27T09:50:49",
+      "last_seen": "2026-08-27T09:50:50",
+      "avg_confidence": 0.53,
+      "frame_count": 12,
+      "plate": null,
+      "plate_confidence": null
+    },
+    "V009": {
+      "vehicle_class": "car",
+      "first_seen": "2026-08-27T09:50:50",
+      "last_seen": "2026-08-27T09:50:50",
+      "avg_confidence": 0.63,
+      "frame_count": 3,
+      "plate": null,
+      "plate_confidence": null
+    },
+    "V010": {
+      "vehicle_class": "car",
+      "first_seen": "2026-08-27T09:50:50",
+      "last_seen": "2026-08-27T09:50:50",
+      "avg_confidence": 0.68,
+      "frame_count": 6,
+      "plate": null,
+      "plate_confidence": null
+    },
+    "V011": {
+      "vehicle_class": "car",
+      "first_seen": "2026-08-27T09:50:55",
+      "last_seen": "2026-08-27T09:50:55",
+      "avg_confidence": 0.5,
+      "frame_count": 2,
+      "plate": null,
+      "plate_confidence": null
+    }
+  }
+}

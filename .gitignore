@@ -107,3 +107,5 @@ Desktop.ini
 .idea/
 *.swp
 *.swo
+test_ibvap.db  
+*.txt  

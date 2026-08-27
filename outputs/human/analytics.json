@@ -1,0 +1,53 @@
+{
+  "camera_id": "CAM-HUMAN-01",
+  "source": "test-videos/humans/pedestrian-road.mp4",
+  "current_active_people": 0,
+  "unique_tracks": 7,
+  "peak_people": 2,
+  "average_confidence": 0.737,
+  "total_frames_processed": 647,
+  "tracks": {
+    "P001": {
+      "first_seen": "2026-08-27T09:49:02",
+      "last_seen": "2026-08-27T09:49:04",
+      "avg_confidence": 0.81,
+      "frame_count": 69
+    },
+    "P004": {
+      "first_seen": "2026-08-27T09:49:08",
+      "last_seen": "2026-08-27T09:49:08",
+      "avg_confidence": 0.55,
+      "frame_count": 2
+    },
+    "P009": {
+      "first_seen": "2026-08-27T09:49:14",
+      "last_seen": "2026-08-27T09:49:15",
+      "avg_confidence": 0.61,
+      "frame_count": 23
+    },
+    "P011": {
+      "first_seen": "2026-08-27T09:49:21",
+      "last_seen": "2026-08-27T09:49:23",
+      "avg_confidence": 0.78,
+      "frame_count": 62
+    },
+    "P012": {
+      "first_seen": "2026-08-27T09:49:22",
+      "last_seen": "2026-08-27T09:49:22",
+      "avg_confidence": 0.44,
+      "frame_count": 1
+    },
+    "P014": {
+      "first_seen": "2026-08-27T09:49:23",
+      "last_seen": "2026-08-27T09:49:23",
+      "avg_confidence": 0.58,
+      "frame_count": 1
+    },
+    "P019": {
+      "first_seen": "2026-08-27T09:49:24",
+      "last_seen": "2026-08-27T09:49:25",
+      "avg_confidence": 0.59,
+      "frame_count": 26
+    }
+  }
+}

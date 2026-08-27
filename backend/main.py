@@ -1,19 +1,20 @@
 """
-IBVAP — Intelligent Border Video Analytics Platform
-Backend Application Entrypoint
-Owned by: Team 1 (AI/ML + Backend - Person B)
+IBVAP — FastAPI Backend Entry Point
+Run: python -m backend.main   or   uvicorn backend.main:app --reload
 """
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from backend.api.routes import router
+from backend.database import db
+from backend import config
 
 app = FastAPI(
-    title="IBVAP Backend API",
-    version="1.0.0",
-    description="Intelligent Border Video Analytics Platform - Command & Streaming API"
+    title="IBVAP Backend Prototype",
+    description="Intelligent Border Video Analytics Platform — AI + Backend API",
+    version=config.VERSION,
 )
 
-# CORS configuration for Frontend (Team 2)
+# CORS — allow Team 2 frontend on any local port
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -23,24 +24,14 @@ app.add_middleware(
 )
 
 
-@app.get("/health", tags=["System"])
-def health_check():
-    """
-    Health check endpoint as defined in docs/API_CONTRACT.md
-    """
-    return {
-        "status": "healthy",
-        "version": "1.0.0",
-        "uptime_seconds": 0,
-        "timestamp": "2026-08-27T11:30:00Z",
-        "services": {
-            "database": "connected",
-            "websocket": "active",
-            "ai_pipeline": "standby"
-        }
-    }
+@app.on_event("startup")
+def on_startup():
+    db.init_db()
+
+
+app.include_router(router)
 
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)
