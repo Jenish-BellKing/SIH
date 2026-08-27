@@ -1,0 +1,26 @@
+[
+  {
+    "camera_id": "BOP-07",
+    "object_type": "person",
+    "track_id": "P023",
+    "confidence": 0.96,
+    "bbox": [412, 238, 520, 610],
+    "timestamp": "2026-08-27T10:43:17"
+  },
+  {
+    "camera_id": "BOP-07",
+    "object_type": "person",
+    "track_id": "P024",
+    "confidence": 0.92,
+    "bbox": [530, 245, 625, 605],
+    "timestamp": "2026-08-27T10:43:18"
+  },
+  {
+    "camera_id": "BOP-04",
+    "object_type": "person",
+    "track_id": "P025",
+    "confidence": 0.88,
+    "bbox": [180, 310, 260, 580],
+    "timestamp": "2026-08-27T10:44:05"
+  }
+]

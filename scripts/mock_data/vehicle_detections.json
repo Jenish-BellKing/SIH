@@ -1,0 +1,29 @@
+[
+  {
+    "camera_id": "BOP-03",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V012",
+    "confidence": 0.94,
+    "bbox": [412, 238, 620, 510],
+    "timestamp": "2026-08-27T10:42:31"
+  },
+  {
+    "camera_id": "BOP-03",
+    "object_type": "vehicle",
+    "vehicle_class": "truck",
+    "track_id": "V013",
+    "confidence": 0.91,
+    "bbox": [150, 190, 520, 580],
+    "timestamp": "2026-08-27T10:43:00"
+  },
+  {
+    "camera_id": "BOP-09",
+    "object_type": "vehicle",
+    "vehicle_class": "motorcycle",
+    "track_id": "V014",
+    "confidence": 0.89,
+    "bbox": [320, 310, 410, 480],
+    "timestamp": "2026-08-27T10:44:15"
+  }
+]

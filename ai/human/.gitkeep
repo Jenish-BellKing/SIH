@@ -1,0 +1,4 @@
+# AI Human Detection & Tracking Pipeline
+Owned by: Team 1 (Person A)
+Scope: YOLOv8 Person Detection + ByteTrack Persistent Tracking
+Reference: docs/DATA_SCHEMA.md Section 3

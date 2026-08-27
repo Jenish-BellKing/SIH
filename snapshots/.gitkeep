@@ -1,0 +1,3 @@
+# Event Snapshot Evidence Storage
+Store JPEG event snapshots for forensic evidence viewer.
+Images stored here are served via static file server or FastAPI.

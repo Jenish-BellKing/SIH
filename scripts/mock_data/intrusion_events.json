@@ -1,0 +1,36 @@
+[
+  {
+    "event_id": "EVT-1004",
+    "event_type": "INTRUSION",
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T10:48:10",
+    "object_type": "person",
+    "track_id": "P023",
+    "confidence": 0.89,
+    "severity": "CRITICAL",
+    "snapshot": "/snapshots/EVT-1004.jpg",
+    "metadata": {
+      "zone_name": "Restricted North Perimeter Zone A",
+      "breach_rule": "Virtual Line Crossing",
+      "simulated": true,
+      "note": "Phase-2 demonstration placeholder event"
+    }
+  },
+  {
+    "event_id": "EVT-1005",
+    "event_type": "INTRUSION",
+    "camera_id": "BOP-04",
+    "timestamp": "2026-08-27T10:50:22",
+    "object_type": "person",
+    "track_id": "P025",
+    "confidence": 0.91,
+    "severity": "HIGH",
+    "snapshot": "/snapshots/EVT-1005.jpg",
+    "metadata": {
+      "zone_name": "West Ridge Buffer Zone",
+      "breach_rule": "Loitering Incursion",
+      "simulated": true,
+      "note": "Phase-2 demonstration placeholder event"
+    }
+  }
+]
