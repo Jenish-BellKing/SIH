@@ -4,28 +4,31 @@
 
 ---
 
-## 1. Setup Instructions
+## 1. Setup & Execution Instructions
 
 The frontend is built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, **Leaflet**, and **Recharts**.
 
-### Initialization Command (Run when initializing frontend workspace):
+### Start Development Server:
 ```bash
-npx -y create-next-app@latest ./ --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --use-npm
+cd frontend
+npm run dev
 ```
+Dashboard available at `http://localhost:3000`.
 
-### Install Required Frontend Dependencies:
+### Build for Production:
 ```bash
-npm install lucide-react leaflet react-leaflet recharts clsx tailwind-merge
-npm install -D @types/leaflet
+npm run build
+npm run start
 ```
 
 ---
 
 ## 2. Shared Contracts & Mock Server
 
-Before Team 1's backend is finalized, run against the mock server:
+The frontend is fully mock-first and can run in **Standalone Mode** (built-in simulation streamer) or connected to the Python mock server:
+
 ```bash
-# Terminal 1: Run mock server from project root
+# Optional: Run mock server from project root
 python scripts/mock_server.py
 ```
 - REST API: `http://localhost:8000`
