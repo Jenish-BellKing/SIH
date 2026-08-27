@@ -1,8 +1,8 @@
 {
-  "humans_detected": 23,
-  "vehicles_detected": 17,
-  "anpr_events": 8,
-  "critical_alerts": 4,
-  "active_cameras": 11,
-  "total_cameras": 12
+  "humans_detected": 24,
+  "vehicles_detected": 38,
+  "anpr_events": 25,
+  "critical_alerts": 2,
+  "active_cameras": 4,
+  "total_cameras": 5
 }

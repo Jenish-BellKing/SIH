@@ -1,26 +1,177 @@
 [
   {
-    "camera_id": "BOP-03",
-    "event_type": "ANPR",
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
     "vehicle_class": "car",
-    "plate_number": "TN30AB1234",
-    "confidence": 0.91,
-    "timestamp": "2026-08-27T10:42:31"
-  },
-  {
-    "camera_id": "BOP-03",
-    "event_type": "ANPR",
-    "vehicle_class": "truck",
-    "plate_number": "HR26DK8899",
-    "confidence": 0.95,
-    "timestamp": "2026-08-27T10:43:05"
+    "plate_number": "TN30AB1201",
+    "confidence": 0.81
   },
   {
     "camera_id": "BOP-01",
-    "event_type": "ANPR",
-    "vehicle_class": "suv",
-    "plate_number": "DL01CZ4321",
-    "confidence": 0.88,
-    "timestamp": "2026-08-27T10:45:12"
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.77
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.73
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "bus",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.67
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.65
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.63
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.57
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "truck",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.4
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.36
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.92
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "bus",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.81
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.81
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.75
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.69
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.59
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.58
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.54
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "bus",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.5
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.5
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1201",
+    "confidence": 0.43
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1207",
+    "confidence": 0.76
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1207",
+    "confidence": 0.82
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "bus",
+    "plate_number": "TN30AB1211",
+    "confidence": 0.8
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1212",
+    "confidence": 0.7
+  },
+  {
+    "camera_id": "BOP-01",
+    "timestamp": "2026-08-27T12:59:33Z",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1207",
+    "confidence": 0.83
   }
 ]

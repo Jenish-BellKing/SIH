@@ -1,26 +1,522 @@
 [
   {
     "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:26Z",
     "object_type": "person",
-    "track_id": "P023",
-    "confidence": 0.96,
-    "bbox": [412, 238, 520, 610],
-    "timestamp": "2026-08-27T10:43:17"
+    "track_id": "P001",
+    "confidence": 0.83,
+    "bbox": [
+      92.9,
+      314.6,
+      128.4,
+      419.5
+    ]
   },
   {
     "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
     "object_type": "person",
-    "track_id": "P024",
-    "confidence": 0.92,
-    "bbox": [530, 245, 625, 605],
-    "timestamp": "2026-08-27T10:43:18"
+    "track_id": "P001",
+    "confidence": 0.85,
+    "bbox": [
+      93.3,
+      307.2,
+      128.8,
+      416.5
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.86,
+    "bbox": [
+      91.1,
+      303.4,
+      130.9,
+      414.6
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.88,
+    "bbox": [
+      92.8,
+      301.8,
+      134.0,
+      416.1
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.87,
+    "bbox": [
+      154.9,
+      304.8,
+      195.2,
+      414.7
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.88,
+    "bbox": [
+      93.2,
+      300.3,
+      135.2,
+      423.8
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.87,
+    "bbox": [
+      155.9,
+      299.8,
+      199.4,
+      420.4
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.83,
+    "bbox": [
+      91.4,
+      293.5,
+      138.5,
+      422.8
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.88,
+    "bbox": [
+      162.7,
+      290.9,
+      209.7,
+      419.3
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.84,
+    "bbox": [
+      92.8,
+      286.8,
+      141.7,
+      427.6
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.86,
+    "bbox": [
+      163.7,
+      288.8,
+      210.7,
+      420.3
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.85,
+    "bbox": [
+      89.4,
+      281.5,
+      142.7,
+      432.4
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:27Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.8,
+    "bbox": [
+      167.3,
+      289.1,
+      218.3,
+      431.2
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.85,
+    "bbox": [
+      89.7,
+      282.2,
+      145.0,
+      439.4
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.9,
+    "bbox": [
+      173.2,
+      283.2,
+      225.6,
+      440.0
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.84,
+    "bbox": [
+      87.1,
+      282.6,
+      147.0,
+      450.8
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.88,
+    "bbox": [
+      175.0,
+      281.3,
+      231.4,
+      446.9
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.85,
+    "bbox": [
+      88.3,
+      286.9,
+      152.4,
+      466.2
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.85,
+    "bbox": [
+      183.5,
+      281.6,
+      243.4,
+      460.6
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.88,
+    "bbox": [
+      90.8,
+      291.8,
+      158.1,
+      488.8
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.88,
+    "bbox": [
+      191.5,
+      289.6,
+      254.0,
+      481.0
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.88,
+    "bbox": [
+      88.6,
+      290.7,
+      167.9,
+      498.8
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:28Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.88,
+    "bbox": [
+      195.0,
+      290.5,
+      267.6,
+      497.8
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:29Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.88,
+    "bbox": [
+      97.2,
+      289.5,
+      177.3,
+      531.1
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:29Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.89,
+    "bbox": [
+      207.0,
+      289.3,
+      282.6,
+      518.3
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:29Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.87,
+    "bbox": [
+      95.1,
+      290.9,
+      185.9,
+      548.1
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:29Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.87,
+    "bbox": [
+      215.8,
+      293.5,
+      300.8,
+      546.5
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:29Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.86,
+    "bbox": [
+      91.8,
+      298.2,
+      196.1,
+      571.1
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:29Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.87,
+    "bbox": [
+      236.4,
+      304.4,
+      329.1,
+      580.0
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:29Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.87,
+    "bbox": [
+      92.6,
+      313.3,
+      200.9,
+      622.6
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:29Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.87,
+    "bbox": [
+      255.9,
+      320.2,
+      353.2,
+      622.2
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.88,
+    "bbox": [
+      78.5,
+      342.2,
+      204.5,
+      664.9
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.87,
+    "bbox": [
+      268.6,
+      338.3,
+      381.6,
+      671.4
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.89,
+    "bbox": [
+      55.6,
+      388.6,
+      202.1,
+      693.5
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.9,
+    "bbox": [
+      283.9,
+      362.8,
+      413.8,
+      695.7
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.91,
+    "bbox": [
+      4.1,
+      462.1,
+      178.5,
+      699.4
+    ]
+  },
+  {
+    "camera_id": "BOP-07",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "person",
+    "track_id": "P002",
+    "confidence": 0.87,
+    "bbox": [
+      282.6,
+      416.3,
+      434.5,
+      699.8
+    ]
   },
   {
     "camera_id": "BOP-04",
+    "timestamp": "2026-08-27T12:59:36Z",
     "object_type": "person",
-    "track_id": "P025",
-    "confidence": 0.88,
-    "bbox": [180, 310, 260, 580],
-    "timestamp": "2026-08-27T10:44:05"
+    "track_id": "P001",
+    "confidence": 0.82,
+    "bbox": [
+      250.5,
+      192.8,
+      310.1,
+      478.4
+    ]
+  },
+  {
+    "camera_id": "BOP-04",
+    "timestamp": "2026-08-27T12:59:36Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.81,
+    "bbox": [
+      153.6,
+      194.6,
+      232.9,
+      471.1
+    ]
+  },
+  {
+    "camera_id": "BOP-04",
+    "timestamp": "2026-08-27T12:59:36Z",
+    "object_type": "person",
+    "track_id": "P001",
+    "confidence": 0.63,
+    "bbox": [
+      300.7,
+      214.1,
+      359.9,
+      464.6
+    ]
   }
 ]

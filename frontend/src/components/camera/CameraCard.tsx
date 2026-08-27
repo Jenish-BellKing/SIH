@@ -16,6 +16,9 @@ import {
   Sliders,
   Shield,
   Focus,
+  Play,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 
 interface CameraCardProps {
@@ -31,7 +34,12 @@ export const CameraCard: React.FC<CameraCardProps> = ({
 }) => {
   const { liveDetections, events } = useSurveillance();
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [dimensions, setDimensions] = useState({ width: 640, height: 360 });
+
+  // Video State
+  const [videoError, setVideoError] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   // Layer Visibility State
   const [showBoxes, setShowBoxes] = useState(true);
@@ -79,6 +87,13 @@ export const CameraCard: React.FC<CameraCardProps> = ({
   const isOnline = camera.status === "online";
   const isWarning = camera.status === "warning";
   const isOffline = camera.status === "offline";
+
+  // Normalize video path for browser playback
+  const videoSrc = camera.source
+    ? camera.source.startsWith("http") || camera.source.startsWith("/")
+      ? camera.source
+      : `/${camera.source}`
+    : "";
 
   return (
     <div
@@ -214,33 +229,52 @@ export const CameraCard: React.FC<CameraCardProps> = ({
               SIGNAL CARRIER LOST
             </p>
             <p className="text-[10px] font-mono text-slate-600">
-              RTSP STREAM UNREACHABLE // BOP-09
+              RTSP STREAM UNREACHABLE // {camera.camera_id}
             </p>
           </div>
         ) : (
           /* Active Surveillance Canvas Feed */
           <>
-            {/* Synthetic CCTV Grid & Surveillance Backdrop */}
-            <div className="absolute inset-0 bg-[#060a12] flex items-center justify-center">
-              {/* Tactical Radar Grid Background */}
-              <div
-                className="absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(#06b6d4 1px, transparent 1px), linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
-                  backgroundSize: "20px 20px, 40px 40px, 40px 40px",
-                }}
+            {/* Real Video Playback */}
+            {camera.source_type === "video" && videoSrc && !videoError ? (
+              <video
+                ref={videoRef}
+                src={videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                onError={() => setVideoError(true)}
+                className="absolute inset-0 w-full h-full object-cover z-0"
               />
+            ) : null}
 
-              {/* Central Target Reticle */}
-              <div className="w-24 h-24 rounded-full border border-cyan-500/20 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full border border-dashed border-cyan-500/30" />
-                <div className="w-1 h-1 bg-cyan-400 rounded-full" />
+            {/* Synthetic CCTV Grid & Surveillance Backdrop (Fallback if video is not available) */}
+            {(!videoSrc || videoError || camera.source_type !== "video") && (
+              <div className="absolute inset-0 bg-[#060a12] flex items-center justify-center">
+                {/* Tactical Radar Grid Background */}
+                <div
+                  className="absolute inset-0 opacity-20"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(#06b6d4 1px, transparent 1px), linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    backgroundSize: "20px 20px, 40px 40px, 40px 40px",
+                  }}
+                />
+
+                {/* Central Target Reticle */}
+                <div className="w-24 h-24 rounded-full border border-cyan-500/20 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full border border-dashed border-cyan-500/30" />
+                  <div className="w-1 h-1 bg-cyan-400 rounded-full" />
+                </div>
+
+                {/* Scanning Light Line */}
+                <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-scanline" />
               </div>
+            )}
 
-              {/* Scanning Light Line */}
-              <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-scanline" />
-            </div>
+            {/* Subtle CCTV Vignette & Scanline Overlay */}
+            <div className="absolute inset-0 pointer-events-none z-5 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
 
             {/* AI Canvas Overlays (YOLO Persons, Vehicles, ANPR, Geo-Fence) */}
             <AIOverlayCanvas
@@ -259,7 +293,7 @@ export const CameraCard: React.FC<CameraCardProps> = ({
             {/* Live Feed Watermark Overlay */}
             <div className="absolute top-2 left-2 z-20 flex items-center gap-2 bg-black/60 backdrop-blur px-2 py-0.5 rounded border border-slate-800 text-[10px] font-mono text-slate-300">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-              <span className="font-bold text-red-400">REC</span>
+              <span className="font-bold text-red-400">LIVE</span>
               <span>{camera.source_type.toUpperCase()}</span>
             </div>
 
@@ -281,7 +315,7 @@ export const CameraCard: React.FC<CameraCardProps> = ({
 
       {/* Footer Info Strip */}
       <div className="px-3 py-1 bg-[#090d15] border-t border-slate-900 flex items-center justify-between text-[10px] font-mono text-slate-500 select-none">
-        <span>SRC: {camera.source}</span>
+        <span className="truncate max-w-[280px]">SRC: {camera.source}</span>
         <span
           className={
             isOnline

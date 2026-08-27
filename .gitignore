@@ -69,15 +69,11 @@ models/*.weights
 *.engine
 
 # Heavy Video & Image Evidence Binaries (Place locally, keep .gitkeep)
-test-videos/humans/*.mp4
-test-videos/humans/*.avi
-test-videos/humans/*.mov
-test-videos/vehicles/*.mp4
-test-videos/vehicles/*.avi
-test-videos/vehicles/*.mov
-test-videos/anpr/*.mp4
-test-videos/anpr/*.avi
-test-videos/anpr/*.mov
+*.mp4
+*.avi
+*.mov
+*.webm
+*.mkv
 outputs/human/*.mp4
 outputs/human/*.avi
 outputs/vehicle/*.mp4

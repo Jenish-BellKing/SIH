@@ -5,7 +5,7 @@
     "location": "North Fence Sector 4",
     "status": "online",
     "source_type": "video",
-    "source": "test-videos/humans/human_single.mp4",
+    "source": "test-videos/humans/create_a_cctv_footage_video_.mp4",
     "latitude": 31.1048,
     "longitude": 77.1734
   },
@@ -15,7 +15,7 @@
     "location": "East Gate Entry",
     "status": "online",
     "source_type": "video",
-    "source": "test-videos/vehicles/vehicle_traffic.mp4",
+    "source": "test-videos/vehicles/WhatsApp Video 2026-08-27 at 5.57.47 PM.mp4",
     "latitude": 31.1082,
     "longitude": 77.1791
   },
@@ -25,7 +25,7 @@
     "location": "South Perimeter",
     "status": "warning",
     "source_type": "video",
-    "source": "test-videos/anpr/plate_test.mp4",
+    "source": "test-videos/anpr/anpr_WhatsApp Video 2026-08-27 at 5.57.49 PM (1).mp4",
     "latitude": 31.0995,
     "longitude": 77.1689
   },
@@ -37,7 +37,7 @@
     "source_type": "video",
     "source": "test-videos/humans/human_patrol.mp4",
     "latitude": 31.1021,
-    "longitude": 77.1620
+    "longitude": 77.162
   },
   {
     "camera_id": "BOP-09",
@@ -47,6 +47,6 @@
     "source_type": "video",
     "source": "test-videos/vehicles/depot_entry.mp4",
     "latitude": 31.1065,
-    "longitude": 77.1710
+    "longitude": 77.171
   }
 ]

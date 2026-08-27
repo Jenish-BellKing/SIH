@@ -1,29 +1,562 @@
 [
   {
     "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:30Z",
     "object_type": "vehicle",
     "vehicle_class": "car",
-    "track_id": "V012",
-    "confidence": 0.94,
-    "bbox": [412, 238, 620, 510],
-    "timestamp": "2026-08-27T10:42:31"
+    "track_id": "V001",
+    "confidence": 0.89,
+    "bbox": [
+      433.4,
+      352.4,
+      534.0,
+      467.3
+    ]
   },
   {
     "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:30Z",
     "object_type": "vehicle",
-    "vehicle_class": "truck",
-    "track_id": "V013",
-    "confidence": 0.91,
-    "bbox": [150, 190, 520, 580],
-    "timestamp": "2026-08-27T10:43:00"
+    "vehicle_class": "car",
+    "track_id": "V001",
+    "confidence": 0.8,
+    "bbox": [
+      896.2,
+      314.0,
+      984.7,
+      358.9
+    ]
   },
   {
-    "camera_id": "BOP-09",
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:30Z",
     "object_type": "vehicle",
-    "vehicle_class": "motorcycle",
-    "track_id": "V014",
+    "vehicle_class": "car",
+    "track_id": "V001",
+    "confidence": 0.67,
+    "bbox": [
+      718.4,
+      312.9,
+      832.2,
+      376.4
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V001",
     "confidence": 0.89,
-    "bbox": [320, 310, 410, 480],
-    "timestamp": "2026-08-27T10:44:15"
+    "bbox": [
+      433.2,
+      351.9,
+      533.9,
+      467.2
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V001",
+    "confidence": 0.78,
+    "bbox": [
+      896.9,
+      314.3,
+      985.1,
+      359.2
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V001",
+    "confidence": 0.63,
+    "bbox": [
+      721.2,
+      313.1,
+      831.9,
+      376.4
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.89,
+    "bbox": [
+      432.8,
+      352.9,
+      533.9,
+      467.2
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:30Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.8,
+    "bbox": [
+      897.0,
+      314.9,
+      984.2,
+      359.1
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.88,
+    "bbox": [
+      434.3,
+      353.0,
+      534.1,
+      467.1
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.77,
+    "bbox": [
+      896.7,
+      314.0,
+      984.6,
+      358.8
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.89,
+    "bbox": [
+      435.8,
+      353.1,
+      534.6,
+      466.8
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.78,
+    "bbox": [
+      896.9,
+      314.4,
+      985.1,
+      358.8
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.88,
+    "bbox": [
+      438.1,
+      353.8,
+      534.2,
+      467.0
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.79,
+    "bbox": [
+      896.8,
+      313.8,
+      984.7,
+      358.9
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.89,
+    "bbox": [
+      438.1,
+      353.7,
+      534.1,
+      467.0
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.78,
+    "bbox": [
+      896.6,
+      314.2,
+      985.1,
+      358.7
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.9,
+    "bbox": [
+      437.8,
+      354.7,
+      534.1,
+      467.0
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.74,
+    "bbox": [
+      896.8,
+      314.9,
+      985.2,
+      358.7
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.89,
+    "bbox": [
+      436.7,
+      353.8,
+      534.0,
+      467.0
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.8,
+    "bbox": [
+      896.5,
+      314.1,
+      985.0,
+      358.9
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.88,
+    "bbox": [
+      436.6,
+      353.2,
+      534.4,
+      466.4
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.78,
+    "bbox": [
+      897.3,
+      314.0,
+      984.9,
+      358.9
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.86,
+    "bbox": [
+      436.0,
+      353.9,
+      534.0,
+      466.7
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.78,
+    "bbox": [
+      896.9,
+      313.3,
+      984.8,
+      358.9
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.88,
+    "bbox": [
+      437.5,
+      353.7,
+      531.9,
+      464.1
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:31Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.79,
+    "bbox": [
+      896.5,
+      314.3,
+      984.1,
+      358.9
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.87,
+    "bbox": [
+      436.7,
+      350.1,
+      529.7,
+      454.8
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.8,
+    "bbox": [
+      897.0,
+      314.3,
+      984.5,
+      359.0
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V005",
+    "confidence": 0.72,
+    "bbox": [
+      720.0,
+      315.3,
+      831.2,
+      374.7
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.84,
+    "bbox": [
+      437.9,
+      343.0,
+      524.3,
+      442.3
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.81,
+    "bbox": [
+      896.8,
+      314.7,
+      984.8,
+      359.1
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V005",
+    "confidence": 0.72,
+    "bbox": [
+      706.0,
+      315.5,
+      830.9,
+      374.2
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.69,
+    "bbox": [
+      438.4,
+      337.5,
+      519.7,
+      432.1
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.77,
+    "bbox": [
+      896.4,
+      315.3,
+      984.4,
+      358.8
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V005",
+    "confidence": 0.62,
+    "bbox": [
+      717.9,
+      316.4,
+      830.6,
+      375.1
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V003",
+    "confidence": 0.46,
+    "bbox": [
+      439.9,
+      333.5,
+      514.8,
+      420.6
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.81,
+    "bbox": [
+      896.2,
+      315.0,
+      983.9,
+      358.8
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V005",
+    "confidence": 0.63,
+    "bbox": [
+      724.6,
+      315.0,
+      831.3,
+      375.2
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V004",
+    "confidence": 0.75,
+    "bbox": [
+      896.7,
+      314.2,
+      984.2,
+      358.4
+    ]
+  },
+  {
+    "camera_id": "BOP-03",
+    "timestamp": "2026-08-27T12:59:32Z",
+    "object_type": "vehicle",
+    "vehicle_class": "car",
+    "track_id": "V005",
+    "confidence": 0.54,
+    "bbox": [
+      687.7,
+      314.1,
+      831.9,
+      375.4
+    ]
   }
 ]
