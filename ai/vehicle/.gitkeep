@@ -1,0 +1,4 @@
+# AI Vehicle Detection & Classification Pipeline
+Owned by: Team 1 (Person B)
+Scope: YOLOv8 Vehicle Classification (car, truck, bus, motorcycle) + ByteTrack
+Reference: docs/DATA_SCHEMA.md Section 4

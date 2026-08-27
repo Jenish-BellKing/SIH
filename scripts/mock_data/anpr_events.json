@@ -1,0 +1,26 @@
+[
+  {
+    "camera_id": "BOP-03",
+    "event_type": "ANPR",
+    "vehicle_class": "car",
+    "plate_number": "TN30AB1234",
+    "confidence": 0.91,
+    "timestamp": "2026-08-27T10:42:31"
+  },
+  {
+    "camera_id": "BOP-03",
+    "event_type": "ANPR",
+    "vehicle_class": "truck",
+    "plate_number": "HR26DK8899",
+    "confidence": 0.95,
+    "timestamp": "2026-08-27T10:43:05"
+  },
+  {
+    "camera_id": "BOP-01",
+    "event_type": "ANPR",
+    "vehicle_class": "suv",
+    "plate_number": "DL01CZ4321",
+    "confidence": 0.88,
+    "timestamp": "2026-08-27T10:45:12"
+  }
+]

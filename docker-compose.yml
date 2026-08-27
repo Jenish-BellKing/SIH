@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: ibvap-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=development
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - DATABASE_URL=sqlite:///./ibvap.db
+    volumes:
+      - ./backend:/app/backend
+      - ./ai:/app/ai
+      - ./models:/app/models
+      - ./test-videos:/app/test-videos
+      - ./snapshots:/app/snapshots
+      - ./scripts:/app/scripts
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Optional Frontend container once frontend build is initialized
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #   container_name: ibvap-frontend
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NEXT_PUBLIC_API_URL=http://localhost:8000
+  #     - NEXT_PUBLIC_WS_URL=ws://localhost:8000/ws/analytics
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+  #   depends_on:
+  #     - backend
