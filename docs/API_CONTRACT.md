@@ -1,8 +1,9 @@
 # IBVAP — Shared API Contract
-**Version:** 1.0.0  
-**Status:** FROZEN — Source of Truth for All Teams  
-**Base URL (Local):** `http://localhost:8000`  
+**Version:** 1.0.0
+**Status:** FROZEN — Source of Truth for All Teams
+**Base URL (Local):** `http://localhost:8000`
 **WebSocket URL (Local):** `ws://localhost:8000/ws/analytics`
+**Implementation Status:** ✅ All endpoints implemented in `backend/api/routes.py`
 
 ---
 
@@ -31,7 +32,7 @@ Error Response Format:
 {
   "error": true,
   "code": "RESOURCE_NOT_FOUND",
-  "message": "Camera with ID 'BOP-99' was not found."
+  "message": "Event with ID 'EVT-9999' was not found."
 }
 ```
 
@@ -40,7 +41,6 @@ Error Response Format:
 ## 3. Endpoints Specification
 
 ### 3.1. System Health Check
-Check operational status of backend services and database.
 
 - **Endpoint:** `GET /health`
 - **Authentication:** None
@@ -49,8 +49,8 @@ Check operational status of backend services and database.
 {
   "status": "healthy",
   "version": "1.0.0",
-  "uptime_seconds": 3600,
-  "timestamp": "2026-08-27T11:30:00Z",
+  "uptime_seconds": 142,
+  "timestamp": "2026-08-27T10:00:00Z",
   "services": {
     "database": "connected",
     "websocket": "active",
@@ -64,75 +64,41 @@ Check operational status of backend services and database.
 ### 3.2. Camera Management
 
 #### `GET /cameras`
-Retrieve all registered border cameras and CCTV streams.
-
-- **Endpoint:** `GET /cameras`
 - **Query Parameters:**
-  - `status` *(optional, string)*: Filter by status (`online`, `offline`, `warning`).
-- **Response `200 OK`:**
+  - `status` *(optional)*: Filter by `online`, `offline`, `warning`
+- **Response `200 OK`:** Array of Camera objects (see `docs/DATA_SCHEMA.md` §2)
+
+**Prototype cameras always present:**
 ```json
 [
   {
-    "camera_id": "BOP-07",
-    "name": "North Fence Camera",
-    "location": "North Fence Sector 4",
+    "camera_id": "CAM-HUMAN-01",
+    "name": "Human Detection Camera",
+    "location": "Prototype — Pedestrian Zone",
     "status": "online",
     "source_type": "video",
-    "source": "test-videos/humans/human_single.mp4",
+    "source": "test-videos/humans/pedestrian-road.mp4",
     "latitude": 31.1048,
     "longitude": 77.1734
   },
   {
-    "camera_id": "BOP-03",
-    "name": "East Gate Checkpoint",
-    "location": "East Gate Entry",
+    "camera_id": "CAM-VEHICLE-01",
+    "name": "Vehicle & ANPR Camera",
+    "location": "Prototype — Vehicle Checkpoint",
     "status": "online",
     "source_type": "video",
-    "source": "test-videos/vehicles/vehicle_traffic.mp4",
+    "source": "test-videos/vehicles/vehicle-road.mp4",
     "latitude": 31.1082,
     "longitude": 77.1791
-  },
-  {
-    "camera_id": "BOP-01",
-    "name": "South Patrol Outpost",
-    "location": "South Perimeter",
-    "status": "warning",
-    "source_type": "video",
-    "source": "test-videos/anpr/plate_test.mp4",
-    "latitude": 31.0995,
-    "longitude": 77.1689
   }
 ]
 ```
-
-#### `POST /cameras` *(Optional / Future Extension)*
-Register a new camera source.
-
-- **Endpoint:** `POST /cameras`
-- **Request Body:**
-```json
-{
-  "camera_id": "BOP-12",
-  "name": "West Perimeter IR Camera",
-  "location": "West Fence Sector 2",
-  "status": "online",
-  "source_type": "rtsp",
-  "source": "rtsp://192.168.1.120:554/stream1",
-  "latitude": 31.1012,
-  "longitude": 77.1650
-}
-```
-- **Response `201 Created`:** Camera object created.
 
 ---
 
 ### 3.3. Analytics Summary
 
 #### `GET /analytics/summary`
-Aggregated high-level counters for the Command Centre dashboard cards.
-
-- **Endpoint:** `GET /analytics/summary`
-- **Query Parameters:** None
 - **Response `200 OK`:**
 ```json
 {
@@ -140,123 +106,57 @@ Aggregated high-level counters for the Command Centre dashboard cards.
   "vehicles_detected": 17,
   "anpr_events": 8,
   "critical_alerts": 4,
-  "active_cameras": 11,
-  "total_cameras": 12
+  "active_cameras": 2,
+  "total_cameras": 2
 }
 ```
-
-> [!NOTE]
-> In Phase 1, portions of this summary may combine real detections with simulated statistics. The JSON schema remains identical when full real-time pipelines are operational.
 
 ---
 
 ### 3.4. Events Management
 
 #### `GET /events`
-Query detection and security events with pagination and filtering.
-
-- **Endpoint:** `GET /events`
 - **Query Parameters:**
-  - `event_type` *(optional, string)*: `HUMAN_DETECTION`, `VEHICLE_DETECTION`, `ANPR`, `INTRUSION`
-  - `camera_id` *(optional, string)*: Filter by camera ID (e.g. `BOP-07`)
-  - `severity` *(optional, string)*: `INFO`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`
-  - `limit` *(optional, integer, default: 50)*: Number of records to return
-  - `offset` *(optional, integer, default: 0)*: Pagination offset
-- **Response `200 OK`:**
-```json
-[
-  {
-    "event_id": "EVT-0001",
-    "event_type": "HUMAN_DETECTION",
-    "camera_id": "BOP-07",
-    "timestamp": "2026-08-27T10:43:17",
-    "object_type": "person",
-    "track_id": "P023",
-    "confidence": 0.96,
-    "severity": "INFO",
-    "snapshot": "/snapshots/EVT-0001.jpg",
-    "metadata": {
-      "bbox": [412, 238, 520, 610],
-      "direction": "south_to_north"
-    }
-  },
-  {
-    "event_id": "EVT-0002",
-    "event_type": "ANPR",
-    "camera_id": "BOP-03",
-    "timestamp": "2026-08-27T10:42:31",
-    "object_type": "vehicle",
-    "track_id": "V012",
-    "confidence": 0.91,
-    "severity": "MEDIUM",
-    "snapshot": "/snapshots/EVT-0002.jpg",
-    "metadata": {
-      "vehicle_class": "car",
-      "plate_number": "TN30AB1234",
-      "bbox": [412, 238, 620, 510]
-    }
-  }
-]
-```
+  - `event_type` *(optional)*: `HUMAN_DETECTION`, `VEHICLE_DETECTION`, `ANPR`, `INTRUSION`
+  - `camera_id` *(optional)*: e.g. `CAM-HUMAN-01`
+  - `severity` *(optional)*: `INFO`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`
+  - `limit` *(optional, default: 50)*
+  - `offset` *(optional, default: 0)*
+- **Response `200 OK`:** Array of Event objects
 
 #### `GET /events/{event_id}`
-Retrieve full details for a specific event.
-
-- **Endpoint:** `GET /events/{event_id}`
-- **Response `200 OK`:** Single Event object (see `docs/EVENT_SCHEMA.md`).
-- **Response `404 Not Found`:** If event does not exist.
+- **Response `200 OK`:** Single Event object
+- **Response `404 Not Found`** if missing
 
 #### `POST /events`
-Ingest an event triggered by the AI inference engine or alert worker.
-
-- **Endpoint:** `POST /events`
-- **Request Body:**
-```json
-{
-  "event_id": "EVT-0003",
-  "event_type": "HUMAN_DETECTION",
-  "camera_id": "BOP-07",
-  "timestamp": "2026-08-27T10:45:00",
-  "object_type": "person",
-  "track_id": "P024",
-  "confidence": 0.94,
-  "severity": "INFO",
-  "snapshot": null,
-  "metadata": {
-    "bbox": [310, 150, 420, 500]
-  }
-}
-```
+- **Request Body:** Event object (see `docs/EVENT_SCHEMA.md`)
 - **Response `201 Created`:**
 ```json
-{
-  "status": "success",
-  "event_id": "EVT-0003"
-}
+{ "status": "success", "event_id": "EVT-TEST01" }
 ```
+
+> [!NOTE]
+> POST /events persists to SQLite AND broadcasts via WebSocket. AI pipelines use this
+> route for meaningful discrete events (not every frame).
 
 ---
 
 ### 3.5. Alerts
 
 #### `GET /alerts`
-Retrieve active and historical security alerts (events with severity `HIGH` or `CRITICAL`, or designated alert triggers).
-
-- **Endpoint:** `GET /alerts`
-- **Query Parameters:**
-  - `active_only` *(optional, boolean, default: false)*
-- **Response `200 OK`:**
+- **Query Parameters:** `active_only` *(optional, bool)*
+- **Response `200 OK`:** Array of Alert objects (events with severity `HIGH`/`CRITICAL`)
 ```json
 [
   {
     "alert_id": "ALT-001",
-    "event_id": "EVT-0005",
-    "alert_title": "Simulated Virtual Perimeter Breach",
-    "camera_id": "BOP-07",
-    "timestamp": "2026-08-27T10:48:10",
-    "severity": "CRITICAL",
-    "is_phase_2_simulated": true,
-    "description": "Person crossed calibrated red zone boundary (simulated indicator).",
+    "event_id": "EVT-0001",
+    "alert_title": "Human Detected — CAM-HUMAN-01",
+    "camera_id": "CAM-HUMAN-01",
+    "timestamp": "2026-08-27T10:43:17",
+    "severity": "HIGH",
+    "is_phase_2_simulated": false,
+    "description": "",
     "acknowledged": false
   }
 ]
@@ -267,22 +167,41 @@ Retrieve active and historical security alerts (events with severity `HIGH` or `
 ## 4. WebSocket Contract
 
 ### `WS /ws/analytics`
-Bi-directional real-time communication channel for live bounding boxes, detection streams, alert toasts, and status changes.
-
 - **URL:** `ws://localhost:8000/ws/analytics`
-- **Payload Framing:** All messages sent over WebSocket MUST adhere to the envelope:
+- **On connect:** Server immediately broadcasts `analytics_update` with current summary
+- **Payload Framing:** All messages use the envelope:
 ```json
 {
-  "message_type": "detection",
+  "message_type": "<type>",
   "data": {}
 }
 ```
 
 Allowed `message_type` values:
-1. `detection`: Real-time frame detection / bounding box update.
-2. `event`: New persisted event generated by AI engine.
-3. `alert`: Critical alert broadcast.
-4. `camera_status`: Camera health / stream state change.
-5. `analytics_update`: Live aggregate counter increments.
+1. `detection` — High-frequency bounding boxes (NOT persisted to DB)
+2. `event` — Discrete persisted event
+3. `alert` — High-priority alert toast
+4. `camera_status` — Camera health/stream state
+5. `analytics_update` — Refreshed aggregate counters
 
-*Detailed payload samples are documented in `docs/EVENT_SCHEMA.md`.*
+*Detailed payload samples in `docs/EVENT_SCHEMA.md`.*
+
+---
+
+## 5. CORS
+
+The backend sets `Access-Control-Allow-Origin: *` for all origins.
+Team 2 frontend on any local port can call the API without proxy configuration.
+
+---
+
+## 6. Running the Backend
+
+```bash
+# From repo root:
+python scripts/run_backend.py
+# or:
+uvicorn backend.main:app --reload
+```
+
+Interactive docs: `http://localhost:8000/docs`

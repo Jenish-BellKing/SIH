@@ -1,171 +1,183 @@
 # IBVAP — System Architecture & Pipeline Specification
-**Version:** 1.0.0  
-**Status:** FROZEN — System Design & Integration Blueprint
+**Version:** 1.1.0
+**Status:** Updated to reflect Phase 1 implementation (Team 1)
+**Branch:** `team/ai-backend`
 
 ---
 
 ## 1. Executive Summary
 
-The **Intelligent Border Video Analytics Platform (IBVAP)** is designed to transform existing border CCTV infrastructure into an AI-enabled real-time situational awareness and command surveillance system.
+The **Intelligent Border Video Analytics Platform (IBVAP)** transforms CCTV video into structured, real-time AI analytics delivered to a command-centre dashboard.
 
 ### Core Processing Flow
 ```
 CCTV / Video Ingestion
       │
       ▼
-AI Perception (Detection & Classification)
+AI Perception (YOLO Detection + Classification)
       │
       ▼
-Multi-Object Tracking (ByteTrack)
+Multi-Object Tracking (ByteTrack via Ultralytics)
       │
-      ▼
-Rules / Behaviour Engine (Phase 1 Basic / Phase 2 Advanced)
-      │
-      ▼
-Events Generation & Storage (SQLite / FastAPI)
-      │
-      ▼
-Alerts & Real-Time Broadcast (WebSocket Hub)
-      │
-      ▼
-Command Centre Dashboard (Next.js, Leaflet, Recharts)
+      ├── [human path]  Human Analytics
+      └── [vehicle path] Vehicle Analytics + ANPR
+                                │
+                                ▼
+                         Events Generation (Event Service)
+                                │
+                    ┌───────────┴───────────┐
+                    ▼                       ▼
+             SQLite (ibvap.db)        WebSocket Hub
+                                            │
+                                            ▼
+                                    Frontend Dashboard
 ```
 
 ---
 
-## 2. End-to-End System Architecture Diagram
+## 2. Implemented Architecture (Phase 1)
 
-```mermaid
-flowchart TB
-    subgraph VideoSources ["Video Ingestion Layer (Team 3)"]
-        V1["Human Test Videos\n(test-videos/humans/)"]
-        V2["Vehicle Test Videos\n(test-videos/vehicles/)"]
-        V3["ANPR Test Videos\n(test-videos/anpr/)"]
-        RTSP["RTSP CCTV Camera Feeds\n(Simulated / Live)"]
-    end
+```
+test-videos/humans/pedestrian-road.mp4
+         │
+         ▼
+  HumanPipeline (ai/human/pipeline.py)
+  ├── YOLO yolov8n.pt  (classes=[0] = person)
+  ├── ByteTrack (via ultralytics built-in)
+  ├── Track IDs: P001, P002, ...
+  ├── Per-track analytics (first_seen, last_seen, avg_conf)
+  └── outputs/human/annotated.mp4 + analytics.json
 
-    subgraph AIPipeline ["AI Perception & Tracking (Team 1 - Person A & B)"]
-        CV["OpenCV Video Ingestion & Frame Extraction"]
-        YOLO_H["YOLO Human Detector\n(yolov8n.pt)"]
-        TRACK_H["ByteTrack Human Tracker\n(Persistent IDs: P001..)"]
-        YOLO_V["YOLO Vehicle Detector\n(Cars, Trucks, Bikes)"]
-        TRACK_V["ByteTrack Vehicle Tracker\n(Persistent IDs: V001..)"]
-        OCR["PaddleOCR License Plate Recognition\n(Plate Number Extractor)"]
-        NORM["JSON Normalizer\n(Adhering to docs/DATA_SCHEMA.md)"]
-    end
+test-videos/vehicles/vehicle-road.mp4
+         │
+         ▼
+  VehiclePipeline (ai/vehicle/pipeline.py)
+  ├── YOLO yolov8n.pt  (classes=[2,3,5,7] = car/moto/bus/truck)
+  ├── ByteTrack (via ultralytics built-in)
+  ├── Track IDs: V001, V002, ...
+  ├── ANPRPipeline (every 5 frames, not every frame)
+  │   ├── PlateDetector  (Haar cascade / bottom-third fallback)
+  │   ├── Preprocessor   (resize → grayscale → bilateral → CLAHE)
+  │   ├── OCREngine      (EasyOCR, CPU, English, lazy-init)
+  │   └── PlateAggregator (min 3 obs, 60% majority → stable plate)
+  └── outputs/vehicle/annotated.mp4 + analytics.json
 
-    subgraph BackendLayer ["FastAPI Core Services (Team 1 - Person B)"]
-        API["FastAPI App\n(main.py / app/api/)"]
-        DB[(SQLite Database\nevents, cameras, alerts)]
-        WSHub["WebSocket Connection Manager\n(/ws/analytics)"]
-        SVC["Event Ingestion & Summary Aggregator"]
-    end
+      AI Results
+          │
+          ▼
+    EventService (backend/services/event_service.py)
+    ├── Assigns event_id, timestamp, severity
+    ├── Persists meaningful events → SQLite (NOT every frame)
+    ├── Broadcasts via WebSocket
+    └── Increments analytics counters
 
-    subgraph FrontendLayer ["Command Centre UI (Team 2 + Team 3)"]
-        DASH["Command Centre Dashboard\n(Next.js / TypeScript)"]
-        MAP["Tactical Map View\n(Leaflet Geospatial Markers)"]
-        LIVE["Live Video & Detection Overlays\n(Canvas / HTML5 Video)"]
-        TIMELINE["Event Feed & Alert Toasts"]
-        CHARTS["Analytics Dashboard\n(Recharts KPI & Trends)"]
-    end
-
-    VideoSources --> CV
-    CV --> YOLO_H --> TRACK_H --> NORM
-    CV --> YOLO_V --> TRACK_V --> NORM
-    CV --> OCR --> NORM
-
-    NORM -->|POST /events / Direct Pipe| SVC
-    SVC --> DB
-    SVC --> WSHub
-    API --> DB
-
-    WSHub -->|WebSocket Stream| DASH
-    API -->|REST API Calls| DASH
-    DASH --> MAP
-    DASH --> LIVE
-    DASH --> TIMELINE
-    DASH --> CHARTS
+    FastAPI backend (backend/main.py)
+    ├── GET  /health
+    ├── GET  /cameras
+    ├── GET  /analytics/summary
+    ├── GET  /events  (filterable by type/camera/severity)
+    ├── GET  /events/{id}
+    ├── POST /events
+    ├── GET  /alerts
+    └── WS   /ws/analytics
 ```
 
 ---
 
 ## 3. Real vs. Simulated Features (Phase 1 vs. Phase 2)
 
-To deliver a rock-solid prototype without overpromising or breaking sprint timelines, features are partitioned strictly into **Phase 1 (Real AI)** and **Phase 2 (Simulated Placeholders)**.
+### Phase 1 — Real AI Implementation (COMPLETE)
+| Feature | Engine | Status |
+|:---|:---|:---|
+| Human Detection | YOLOv8n COCO (class: person) | ✅ Implemented |
+| Human Tracking | ByteTrack (Ultralytics built-in) | ✅ Implemented |
+| Vehicle Detection | YOLOv8n COCO (car/truck/bus/motorcycle) | ✅ Implemented |
+| Vehicle Classification | YOLO class mapping | ✅ Implemented |
+| Vehicle Tracking | ByteTrack | ✅ Implemented |
+| ANPR Plate Detection | Haar cascade + bottom-third fallback | ✅ Implemented |
+| ANPR OCR | EasyOCR (CPU, English) | ✅ Implemented |
+| ANPR Aggregation | Temporal majority voting (≥3 frames) | ✅ Implemented |
+| Event Service | AI → SQLite + WebSocket | ✅ Implemented |
+| REST API | FastAPI (8 endpoints) | ✅ Implemented |
+| WebSocket | Live detection + event stream | ✅ Implemented |
 
-### Phase 1 — Real AI Implementation (Current Sprint)
-| Feature | AI Engine / Implementation | Output Schema |
-| :--- | :--- | :--- |
-| **Human Detection** | Ultralytics YOLOv8 (Class: `person`) | `docs/DATA_SCHEMA.md` Section 3 |
-| **Human Tracking** | ByteTrack multi-object persistent tracking | `docs/DATA_SCHEMA.md` Section 3 |
-| **Vehicle Detection** | Ultralytics YOLOv8 (`car`, `truck`, `bus`, `motorcycle`) | `docs/DATA_SCHEMA.md` Section 4 |
-| **Vehicle Classification** | YOLO class mapping to standard vehicle taxonomy | `docs/DATA_SCHEMA.md` Section 4 |
-| **ANPR (Plate Recognition)** | Plate detection + PaddleOCR text recognition | `docs/DATA_SCHEMA.md` Section 5 |
+### Phase 1 — Simulated Placeholders (Explicitly Labeled)
+| Feature | Representation |
+|:---|:---|
+| Intrusion Detection / Virtual Fence | Reserved event type `INTRUSION`, not generated by AI |
+| Historical trend charts | Seed mock data via `scripts/mock_data/` |
+| Camera health indicators | Mock metric in camera_status WS messages |
 
-### Phase 1 — Simulated / UI Placeholders (Explicitly Labeled)
-| Simulated Feature | UI Representation | Simulation Implementation |
-| :--- | :--- | :--- |
-| **Intrusion Detection / Virtual Fence** | Red polygon bounding breach zone on dashboard map/video | Triggered via mock alert event (`INTRUSION`) with `"is_phase_2_simulated": true` |
-| **Historical Analytics** | 24-hour and 7-day trend charts | Seeded via mock historical database records |
-| **Camera Health Analytics** | FPS, network latency, jitter indicators | Mock metric generator emitting periodic `camera_status` |
-| **Multi-camera Threat Aggregation** | Threat escalation status bar | Rules-based aggregation on event counts |
-| **Advanced Behavioural Analytics** | Loitering, running, unattended baggage | Placeholder card indicating "Phase 2 AI Module" |
-
-### Phase 2 — Future Production Roadmap (Do NOT implement in current sprint)
-1. Real mathematical polygon virtual fencing & ray-casting intrusion detection.
-2. Behavioural anomaly recognition (loitering timers, panic running, crawling).
-3. Facial recognition & cross-camera watchlist matching.
-4. Thermal / Infrared night-vision contrast enhancement.
-5. Military / Law-Enforcement C2 integration bridges.
+### Phase 2 — Future (Do NOT implement now)
+1. Polygon virtual fencing with ray-casting intrusion detection
+2. Behavioural anomaly recognition (loitering, running)
+3. Facial recognition + cross-camera watchlist
+4. Thermal / IR enhancement
 
 ---
 
-## 4. Technology Stack & Baseline Decisions
+## 4. Technology Stack
 
-We adopt a lightweight, robust, and monolithic-first prototype stack.
-
-### Backend & AI Stack
-- **Language:** Python 3.10+
-- **API Framework:** FastAPI
+### Backend & AI Stack (Implemented)
+- **Language:** Python 3.10.11
+- **API Framework:** FastAPI 0.141+
 - **Data Validation:** Pydantic v2
-- **Data Storage:** SQLite (zero-config, high performance for local prototypes)
-- **Real-Time Streaming:** FastAPI native WebSockets (`websockets`)
-- **Computer Vision:** OpenCV (`opencv-python-headless` or `opencv-python`)
-- **Object Detection & Tracking:** Ultralytics YOLOv8 (`ultralytics`), ByteTrack
-- **OCR Engine:** PaddleOCR (`paddleocr`, `paddlepaddle`) or EasyOCR fallback
+- **Database:** SQLite (`ibvap.db`, WAL mode)
+- **Real-Time:** FastAPI native WebSockets
+- **Computer Vision:** OpenCV 5.x
+- **Detection + Tracking:** Ultralytics 8.4.130 (YOLOv8n + ByteTrack)
+- **OCR:** EasyOCR 1.7+ (CPU, English)
 
-### Frontend Stack
-- **Framework:** Next.js 14+ (App Router) / React 18+
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS + Vanilla CSS enhancements
-- **Mapping:** Leaflet & React-Leaflet
-- **Data Visualization:** Recharts
-- **Icons:** Lucide React
+### ANPR Note: EasyOCR vs PaddleOCR
+EasyOCR is used instead of PaddleOCR because `paddlepaddle` has
+incompatible build constraints on Windows + Python 3.10. EasyOCR provides
+equivalent plate character recognition with no install friction on this platform.
+The `ai/requirements.txt` retains PaddleOCR as a conditional dependency for
+Linux/Python <3.12 environments.
 
-### Infrastructure Simplicity Principle
-> [!IMPORTANT]
-> The team MUST NOT introduce unnecessary operational complexity:
-> - **NO** Kubernetes or K3s clusters
-> - **NO** Triton Inference Server
-> - **NO** Redis or Memcached
-> - **NO** Kafka, RabbitMQ, or Celery distributed queues
-> - **NO** External cloud databases or vendor lock-in services
->
-> All components must run locally via simple Python commands and `npm run dev`.
+### Infrastructure Simplicity
+- No Kubernetes, Redis, Kafka, or cloud databases
+- Single `uvicorn` process (no WSGI workers for prototype scale)
+- Single SQLite file (no Postgres for prototype scale)
 
 ---
 
-## 5. Team Ownership Matrix
+## 5. Prototype Cameras
+
+| Camera ID | Name | Type | Source |
+|:---|:---|:---|:---|
+| `CAM-HUMAN-01` | Human Detection Camera | human_detection | `test-videos/humans/pedestrian-road.mp4` |
+| `CAM-VEHICLE-01` | Vehicle & ANPR Camera | vehicle_detection | `test-videos/vehicles/vehicle-road.mp4` |
+
+---
+
+## 6. Team Ownership Matrix
 
 ```
 SIH/
-├── backend/                  ---> Team 1 (Person B)
-├── ai/                       ---> Team 1 (Person A: Human, Person B: Vehicle/ANPR)
-├── models/                   ---> Team 1
-├── scripts/                  ---> Team 1 & Shared Mock Data
-├── frontend/                 ---> Team 2 (Person A: Dashboard, Person B: WebSocket/Map) & Team 3 (Post-video)
-├── test-videos/              ---> Team 3 (Person A: Humans, Person B: Vehicles/ANPR)
-├── outputs/                  ---> Team 3
-├── video-generation-prompts/ ---> Team 3
-└── docs/                     ---> Shared Architecture & Contracts (All Teams)
+├── backend/            → Team 1 (AI + Backend)
+│   ├── main.py         → FastAPI app entry-point
+│   ├── api/routes.py   → REST endpoints + WebSocket
+│   ├── database/db.py  → SQLite persistence
+│   ├── services/       → EventService (AI→DB→WS)
+│   ├── websocket/      → ConnectionManager
+│   ├── schemas/        → Pydantic models (shared contract)
+│   └── config.py       → Constants, startup time
+├── ai/
+│   ├── common/schemas.py → Canonical AI output types
+│   ├── human/pipeline.py → Human detection+tracking
+│   └── vehicle/
+│       ├── pipeline.py    → Vehicle detection+tracking+ANPR
+│       └── anpr/          → Plate detect, preprocess, OCR, aggregate
+├── scripts/
+│   ├── test_human.py   → Human pipeline headless runner
+│   ├── test_vehicle.py → Vehicle+ANPR pipeline headless runner
+│   └── run_backend.py  → Backend server launcher
+├── tests/
+│   ├── test_backend.py → REST + WebSocket integration tests (18 tests)
+│   └── test_anpr.py    → ANPR unit tests (12 tests)
+├── frontend/           → Team 2 (Next.js — do not modify)
+├── test-videos/        → Team 3 (test video sources)
+├── outputs/            → Generated annotated videos + JSON analytics
+└── docs/               → Shared contracts (all teams)
 ```

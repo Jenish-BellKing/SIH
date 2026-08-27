@@ -2,16 +2,25 @@
 IBVAP — FastAPI Backend Entry Point
 Run: python -m backend.main   or   uvicorn backend.main:app --reload
 """
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.api.routes import router
 from backend.database import db
 from backend import config
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    db.init_db()
+    yield
+
+
 app = FastAPI(
     title="IBVAP Backend Prototype",
     description="Intelligent Border Video Analytics Platform — AI + Backend API",
     version=config.VERSION,
+    lifespan=lifespan,
 )
 
 # CORS — allow Team 2 frontend on any local port
@@ -22,12 +31,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.on_event("startup")
-def on_startup():
-    db.init_db()
-
 
 app.include_router(router)
 
